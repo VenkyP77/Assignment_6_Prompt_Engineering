@@ -585,7 +585,37 @@ Across all three scenarios, assigning a specific role (e.g., senior teacher, mar
 ## Part 2: Temperature & Parameter Control
 
 ### 2.1 Temperature Experimentation
+
+#### 2.1.1 Prompt 1: Low Temperature (Deterministic, focused)
+1. **Prompt:** Explain what photosynthesis is in less than 100 words. Be precise and consistent.
+2. **Temperature Value:** (0.0 - 0.3)
+3. **Output:** Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight into chemical energy.Using the pigment chlorophyll, these organisms capture light energy to drive a chemical reaction that transforms carbon dioxide and water into glucose (sugar). This glucose serves as essential food and fuel for the organism's growth.Crucially, this reaction releases oxygen as a vital byproduct. Ultimately, photosynthesis is the fundamental biological engine that produces the usable energy and breathable air necessary to sustain almost all life on Earth.
+
+#### 2.1.2 Prompt 2: Medium Temperature (Balanced)
+1. **Prompt:** Explain what photosynthesis is in less than 100 words.
+2. **Temperature Value:** (0.6 - 0.8)
+3. **Output:** Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight into chemical energy to fuel their growth.How it works:Inputs: Plants absorb sunlight, water, and carbon dioxide.The Reaction: Inside their cells, light energy combines these ingredients together.Outputs: This produces glucose (sugar) for the plant's food and releases oxygen into the air as a byproduct.Essentially, it is nature's solar power system, creating the energy plants need to survive while producing the oxygen we breathe.
+
+#### 2.1.3 Prompt 3: High Temperature (Creative, Random)
+1. **Prompt:** Explain what photosynthesis is in less than 100 words. Be creative and explore diverse ideas
+2. **Temperature Value:** (1.0 - 1.5)
+3. **Output:** Think of plants as the ultimate solar-powered alchemists. Photosynthesis is their brilliant, self-sustaining manufacturing process. They inhale carbon dioxide—our exhaled waste—and draw water from the earth. Using sunlight as a catalyst, they fuse these raw materials inside microscopic green factories called chloroplasts. The final output? Energy-rich glucose to fuel their own growth, and fresh oxygen released as a miraculous byproduct. It is an elegant, biological recycling system that transforms pure starlight into the food we eat and the very air we breathe.
+
+#### 2.1.4 Comparison Table
+
+| **Comparison Parameter** | **Prompt 1 (Low Temperature)** | **Prompt 2 (Medium Temperature)** | **Prompt 3 (High Temperature)** |
+|:-------------------------|:-------------------------------|:----------------------------------|:--------------------------------|
+| **Temperature** | 0.0 - 0.3 | 0.6 - 0.8 | 1.0 - 1.5 |
+| **Structure** | Single flowing paragraph with technical jargon, very literal | Structure - Labelled sections (Input, Reaction, Outputs) with lay language and a single analogy | Single flowing paragraph with adjectives used to emphasize - very figurative and flowery language |
+| **Technical terms used** | Chlorophyll, Glucose, carbon dioxide, oxygen, byproduct | Glucose, byproduct | Chloroplasts, glucose, catalyst, oxygen |
+| **Tone** | Textbook style explanation (Impersonal / Third-person) | Instructional (Second-person). "The oxygen we breathe.." | Conversational (Second-person). "Think of plants as..." |
+| **Variety in Vocabulary** | Low. The LLM uses standard scientific wordings. This makes it highly reproducible | Moderate - Plain language mixed with scientific wordings. | High variety in vocabulary. This makes it less likely that the same output will be reproduced in multiple runs |  
+
 ### 2.2 Analysis & Recommendations
+The key takeaway: as temperature rises, the output shifts from factual precision and reproducibility toward richer metaphors, varied vocabulary, and a more conversational voice — at the cost of consistency between runs. The medium setting strikes a balance by introducing light structure (labeled sections) and one closing analogy while keeping the core explanation grounded.
+Low temperature (0.0–0.3) is ideal when we need reliable, repeatable output — for example, generating structured medical or legal summaries where factual accuracy is non-negotiable, or building an automated customer-support bot that must give the same correct answer every time a user asks "How do I reset my password?" 
+High temperature (1.0–1.5) is best when originality matters more than consistency — such as brainstorming taglines for an ad campaign where you want dozens of wildly different options, or writing fiction where fresh metaphors and unexpected turns keep the reader engaged. 
+For the photosynthesis explanation task, the medium temperature (0.6–0.8) worked best because it struck the right balance: the output stayed scientifically accurate and well-organized (with clear Inputs → Reaction → Outputs sections) while still feeling approachable enough for a general audience, thanks to the closing "nature's solar power system" analogy. A low-temperature version would have been too dry for a casual learner, while a high-temperature version, though vivid, risked prioritizing style over clarity.
 
 ## Part 3: Strategic Prompting Techniques
 ### 3.1 Chain-of-Thought Prompting
