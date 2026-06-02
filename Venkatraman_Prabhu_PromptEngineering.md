@@ -7,9 +7,13 @@ LLM Used: Gemini Pro
 
 ### 1.1 Scenario A: Technical Explanation
 **Goal:** Explain a complex technical concept (e.g., "blockchain", "neural networks", "recursion") to a 10-year-old
+
 **Initial Prompt:** Explain a complex concept like "Neural Networks" in a simple manner, as you would to a 10-year old
+
 **Refined Prompt:** 
+
 ***Iteration 1:*** You are an experienced teacher with a rich experience in communicating effectively with 10-year old students. Explain the concept of "Neural Networks" in a simple manner with real-world examples.
+
 ***Iteration 2:*** ROLE: You are a senior science teacher with a rich experience in effectively communicating with 10-year old students. CONTEXT: You are communicating with 10-year old STEM students who are curious and want to explore the world of Machine Learning and Data Science. As a teacher it is your job to spark a desire in them for learning more about this by making the explanation interesting, yet easy to understand. TASK: You need to explain effectively the concepts of Neural Networks with real-world analogies. CONSTRAINTS: (Mandatory)The explanation must contain the following: 1. Real-world analogies (not more than 3) 2. Visual representations in the form of infographics or mind-maps 3. Examples (not more than 3) of Neural Networks in action, in the real-world 4. Minimal use of technical jargon. Wherever, it is important to use jargon, make sure that it is explained in a simple manner. OUTPUT: Output your response as a professional-grade structured word document which contains the following: 1. Summary / Overview 2. Detailed explanation with visuals and examples 3. Real-world implementation use cases 4. A high-level structured learning path to learn more about this concept 5. Additional sources to refer for a further deep-dive into this concept.
 
 **Final Prompt Output:**
@@ -477,10 +481,15 @@ Who knows? One day, you might build the next amazing AI system that changes the 
 
 
 ### 1.1 Scenario B: Professional Email
+
 **Goal:** Draft an email declining a job offer politely while expressing continued interest in the company
+
 **Initial Prompt:** Draft an email declining a job offer for the position of CIO, politely while expressing continued interest in ABC Corporation
+
 **Refined Prompt:**
+
 ***Iteration 1:***  Use the following details to re-draft the email: 1. Subject: "Job Offer for the position of CIO at ABC Corporation" 2. Hiring Manager Name: John Doe 3. ABC Corp product that I am impressed by - "AI-powered Workplace Platform" 4. My name - "Venky Prabhu", LinkedIn Profile URL - https://www.linkedin.com/in/venkyprabhu
+
 ***Iteration 2:*** Refine this email draft further using the following information: CONTEXT: ABC Corporation conducted 3 rounds of interviews for me, culminating with a discussion with their CEO - Mr. Maximus Decimus. Prior to that I had engaging discussions with the outgoing CIO - Ms. Circe Demeter and CHRO - Mr. Eros Nyx. I was told that the position of CIO would report directly to the CEO. ABC Corporation is in the middle of a transition in their Digital Strategy to incorporate an AI-first mindset in their product design. The CIO is expected to work closely with the Chief Digital Officer (CDO) - Mr. Hades Hermes to drive AI Initiatives. THE POSITIVE TAKEAWAYS: All 3 leaders of ABC Corporation that I had the opportunity to meet came across as open-minded and in-tune with the latest transformations occurring in the Tech Industry. They could also articulate a clear vision and coherent roadmap for ABC corp. The compensation offered was competitive. ABC Corp is taking on some ambitious goals and with the right leadership steering the company, it is poised to become a significant player in the segment. MY REASONS FOR DECLINING THE OFFER: The job profile does not directly align with my career aspirations. As an established AI generalist and leader, I aspire to a position where I am directly involved in and leading AI initiatives within the organization. In my conversation with the outgoing CIO, I sensed some amount of political friction between the CIO position and CDO position. The CIO is moving to a different division of ABC Corporation in a lateral move. I did not get an opportunity to meet with the incumbent CDO, despite making a request for the same. I am unsure as to whether this was by design. MY GOAL: I wish to keep ABC Corporation on my horizon, in case a better job opening presents itself in the future. I also struck a good rapport with the CEO and CHRO, during my discussions.
 
 **Final Prompt Output**
@@ -508,10 +517,15 @@ https://www.linkedin.com/in/venkyprabhu
 
 
 ### 1.1 Scenario C: Creative Content
+
 **Goal:** Generate a creative marketing tagline for a new eco-friendly water bottle brand
+
 **Initial Prompt:** Build a creative marketing tagline for "EcoAgua" a new eco-friendly water bottle brand.
+
 **Refined Prompt:** 
+
 ***Iteration 1:*** The brand focuses on the materials and environmental impact of the product and is aimed at the youth. Build a marketing tagline that captures this.
+
 ***Iteration 2:*** You are a Senior Marketing Specialist with deep expertise in crafting impactful marketing campaigns and taglines for consumer products. Refine the tagline with the following context. Recommend the top 3 options that align the most, with the product philosophy
 ABOUT THE BRAND: A relatively new "kid on the block" when it comes to eco-friendly hydration solutions. However, the parent company has a decade of experience in manufacturing eco-friendly solutions in other sectors like consumer accessories and toys.
 PRODUCT PHILOSOPHY: The company recognized the market gap in consumer hydration solutions where a majority of the consumers still rely on unhealthy plastic water bottles. There are very few eco-friendly options available to the consumer at a reasonable price point. Also, none of the currently available eco-friendly products directly appeal to the youth who are by far the largest customer segment in this space. The Product aims at being socially responsible and eco-friendly while NOT compromising on its customer's needs and aspirations.
