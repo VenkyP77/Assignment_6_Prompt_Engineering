@@ -618,8 +618,95 @@ High temperature (1.0–1.5) is best when originality matters more than consiste
 For the photosynthesis explanation task, the medium temperature (0.6–0.8) worked best because it struck the right balance: the output stayed scientifically accurate and well-organized (with clear Inputs → Reaction → Outputs sections) while still feeling approachable enough for a general audience, thanks to the closing "nature's solar power system" analogy. A low-temperature version would have been too dry for a casual learner, while a high-temperature version, though vivid, risked prioritizing style over clarity.
 
 ## Part 3: Strategic Prompting Techniques
+
 ### 3.1 Chain-of-Thought Prompting
+
+#### 3.1.1 Without Chain-of-Thought
+**Prompt:** A company has 150 employees. 60% work in engineering, 25% in sales, and the rest in operations. If the company plans to hire 20% more engineers and 10% more sales people, how many total employees will there be after hiring? Respond with only the final number, no explanation or working.
+**AI Response:** 171.75
+
+#### 3.1.2 With Chain-of-Thought
+**Prompt:** A company has 150 employees. 60% work in engineering, 25% in sales, and the rest in operations. If the company plans to hire 20% more engineers and 10% more sales people, how many total employees will there be after hiring?
+Let's solve this step by step before arriving at the final answer:
+First, calculate the number of employees in each department.
+Then, calculate how many new hires are added to each department.
+Finally, sum up all employees (original + new hires) to find the total.
+Also, note that I cannot hire fractions of employees.
+Show your reasoning at each step. 
+
+**AI Response:** 
+Here is the step-by-step breakdown to solve the problem:
+Step 1: Calculate the initial number of employees in each department.
+First, we find the exact mathematical breakdown based on the 150 total employees:
+Engineering: 60% of 150 = $0.60 \times 150 = 90 employees.
+Sales: 25% of 150 = $0.25 \times 150 = 37.5 employees.
+Operations: 15% (the remaining percentage) of 150 = 0.15 \times 150 = 22.5 employees.
+Reasoning for fractions: Since a company cannot have half an employee, we must round these initial figures to make real-world sense while keeping the total at 150. We can round Sales up to 38 employees. We can round Operations down to 22 employees.(Note: Even if you kept the theoretical 37.5 for the next step, the final rounded hiring numbers would remain exactly the same).
+Step 2: Calculate the number of new hiresNow we calculate the additional employees based on the hiring plan:
+Engineering Hires: 20% more engineers = 0.20 \times 90 = 18 new engineers. (This is a clean whole number).
+Sales Hires: 10% more sales people = 0.10 \times 38 = 3.8 new sales people.
+Reasoning for fractions: As you noted, we cannot hire fractions of employees. We must round the 3.8 new hires to the nearest whole person, which means the company will hire 4 new sales people.(Even if we used the unrounded 37.5 base, 10% is 3.75, which also rounds to 4).
+Step 3: Sum up all employees to find the total
+Finally, we add the new hires to the original company total:
+Original Employees: 150
+Total New Hires: 18 (Engineering) + 4 (Sales) = 22 new hires.
+Final Total: 150 + 22 = 172
+Final Answer:
+After the hiring process is complete, there will be 172 total employees.
+
+#### 3.1.3 Comparison
+**How the outputs differed?:** The outputs differed significantly in both process and result: the without Chain-of-Thought prompt produced a raw mathematical answer of 171.75 (which is impossible — you can't have three-quarters of an employee), while the Chain-of-Thought prompt yielded a practical answer of 172 by recognizing and handling the fractional employee problem through rounding.
+**Why Chain-of-Thought helps with complex reasoning?:** Chain-of-thought helps with complex reasoning because it forces the model to decompose a problem into explicit intermediate steps, making it easier to catch logical issues (like fractional people) that may get missed when jumping straight to a final number.
+**One Limitation that I observed:** One limitation I noted was that the Chain-of-Thought response itself had to make judgment calls about how to round - (e.g., rounding 3.8 sales hires up to 4 rather than down to 3), and a different but equally valid rounding strategy could potentially produce a different final answer — the prompt's instruction helped, but didn't fully eliminate ambiguity. The takeaway is to be specific and explicit even while using Chain-of-Thought prompting.
+
 ### 3.2 Few-Shot Prompting
+
+#### Step 1: Zero-shot Attempt
+**Prompt:** 
+ROLE: You are a sentiment analysis system. Classify the sentiment of the following text into exactly one of these categories: Positive, Negative, or Neutral.
+TASK: Respond with only the sentiment label and a confidence score between 0 and 1. Use this exact format: Sentiment: <label> Confidence: <score>
+INPUT: "{input_text}"
+
+**AI Responses:**
+i. "The product arrived damaged and customer service was unhelpful." - Sentiment: Negative Confidence: 0.98
+ii. "Works as expected, nothing special but does the job." - Sentiment: Neutral Confidence: 0.95
+iii. "Absolutely love this! Best purchase I've made all year!" - Sentiment: Positive Confidence: 0.99
+iv. "The quality is okay but slightly overpriced for what you get." - Sentiment: Negative Confidence: 0.85
+v. "Terrible experience, would not recommend to anyone." - Sentiment: Negative Confidence: 0.99
+
+#### Step 2: Few-shot Attempt
+**Prompt:**
+ROLE: You are a sentiment analysis system. Classify the sentiment of the following text into exactly one of these categories: Positive, Negative, or Neutral.
+EXAMPLES: 
+Review: "This product exceeded my expectations!"
+Sentiment: Positive
+Review: "Completely broke after one week of use."
+Sentiment: Negative
+Review: "It's fine, does what it says on the box."
+Sentiment: Neutral
+TASK: Respond with only the sentiment label and a confidence score between 0 and 1. Use this exact format: Sentiment: <label> Confidence: <score>
+INPUT: "{input_text}"
+
+**AI Responses:**
+i. "The product arrived damaged and customer service was unhelpful." - Sentiment: Negative Confidence: 0.99
+ii. "Works as expected, nothing special but does the job." - Sentiment: Neutral Confidence: 0.95
+iii. "Absolutely love this! Best purchase I've made all year!" - Sentiment: Positive Confidence: 0.99
+iv. "The quality is okay but slightly overpriced for what you get." - Sentiment: Neutral Confidence: 0.75
+v. "Terrible experience, would not recommend to anyone." - Sentiment: Negative Confidence: 0.99
+
+#### Step 3: Analysis
+
+**Comparison Table:**
+| Review # | Zero-shot Result | Few-shot Result | Correct Label | Improved? |
+|:--------:|:----------------:|:---------------:|:-------------:|:---------:|
+| 1 | Negative(0.98) | Negative (0.99) | Negative | Yes (confidence improved) |
+| 2 | Neutral (0.95) | Neutral (0.95) | Neutral | No (confidence same) |
+| 3 | Positive (0.99) | Positive (0.99) | Positive | No (confidence same) |
+| 4 | Negative (0.85) | Neutral (0.75) | Neutral | Yes (label corrected) |
+| 5 | Negative (0.99) | Negative (0.99) | Negative | No (confidence same) |
+
+**Explanation:**
+Few-shot prompting is most useful when the task involves ambiguous or borderline cases where the model needs calibration on where category boundaries fall. This was most obvious with Review #4, where the zero-shot prompt misclassified a mixed but overall neutral review as negative, but the few-shot examples (especially, I think the neutral "does what it says on the box" example) helped the model correctly identify it as neutral. It is also valuable when we need the model to adopt a specific labeling convention or interpretation standard that may not be directly obvious from the prompt instructions alone. Concrete examples communicate decision boundaries and rules in a specific context more effectively than abstract rules learned by the model in training.
 
 ## Part 4: Responsible AI & Limitations
 ### 4.1 Testing for Hallucinations
