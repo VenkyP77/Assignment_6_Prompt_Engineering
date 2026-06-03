@@ -785,17 +785,21 @@ Through this assignment, I encountered three clear limitations of LLMs.
 1. **Factual Accuracy & Hallucination:** When I tested Gemini with the fabricated term "genetic cannibalization," it confidently wove a plausible-sounding narrative around a concept that doesn't exist, seamlessly blending fiction with real facts about Dr. Sandra Knapp's work, which makes these errors dangerously hard to spot without domain expertise.
 2. **Reasoning with real-world constraints:** In the Chain-of-Thought experiment it became apparent that LLMs treat math as purely abstract. Without my explicit nudge about fractional employees, the model returned 171.75 as a final answer, showing it probably lacks the common-sense understanding that you cannot hire three-quarters of a person.
 3. **Inherent Bias and Over-personalization:** The prompt about professional attire for an interview revealed that the model defaulted to Western, male, executive-level, finance-sector norms despite my prompt being completely generic. This was also likely amplified by Gemini having my profile in memory. This also means that the model's attempt at personalization actually ended up narrowing its perspective rather than broadening it.
+
 Collectively, these limitations taught me that LLMs are powerful pattern-completion engines but not very reliable reasoning or fact-checking systems, and that the burden of verification, grounding, and bias correction will still fall squarely on the human user of the LLM.
 
 #### 4.3.2 Three Recommendations for responsible LLM use:
 
 **When should you verify outputs?**
+
 **Answer:** Always verify outputs when factual accuracy matters — my hallucination test proved that LLMs can blend real and fabricated information so convincingly that even a partially informed reader could be misled, so any output involving scientific claims, legal references, medical information, financial figures, etc. must be cross-checked against authoritative primary sources before being trusted or shared. It is a good idea to get the LLM to also provide a list of references / sources from which it got its response.
 
 **What tasks are LLMs NOT suitable for?**
+
 **Answer:** LLMs are not completely suitable for tasks requiring guaranteed correctness, nuanced judgment, or unbiased decision-making — the fractional-employee error and the culturally biased attire recommendation both showed that LLMs lack true reasoning and reflect the skewed patterns in their training data, making them poor choices for autonomous medical diagnosis, legal rulings, hiring decisions, financial advice, etc. where an undetected error or embedded bias could cause real harm to people.
 
-**How can you use LLMs ethically in your work/studies?****
+**How can you use LLMs ethically in your work/studies?**
+
 **Answer:** We can use LLMs ethically by treating them as collaborative drafting tools rather than authoritative sources. Throughout this assignment, the best results always came when I provided rich context, constrained the output, and iteratively refined the response. This means the responsible approach is to:
 1. Always disclose when AI has assisted in generating content
 2. Never submit AI output as entirely original work without review and personal contribution
